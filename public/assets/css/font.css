@@ -1,0 +1,29 @@
+@font-face {
+    font-family: 'thinkregular';
+    src: url('beginning_of_summer_3.html') format('woff2'),
+         url('beginning_of_summer_3-2.html') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'Beginning of Summer';
+    src: url('../fonts/BeginningofSummer.html') format('woff2'),
+        url('../fonts/BeginningofSummer-2.html') format('woff'),
+        url('../fonts/BeginningofSummer-3.html') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Beginning of Summer';
+    src: url('../fonts/BeginningofSummer_1.html') format('woff2'),
+        url('../fonts/BeginningofSummer_1-2.html') format('woff'),
+        url('../fonts/BeginningofSummer_1-3.html') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
