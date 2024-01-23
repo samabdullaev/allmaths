@@ -1,9 +1,9 @@
 Allmaths is a web-based learning application completely developed by a small agile development team that went through all phases of software development model, starting from Requirements Analysis, Development and ending with Manual Functional Testing. Main resources in the website are grouped under videos, books, games, worksheets and curriculum screens implemented via HTML5, CSS, JavaScript as per wireframes created in Balsamiq and requirements documented in Confluence.
 
-• Pitched an idea for a web based learning and gaming application for children aged 3-15 to learn mathematics
-• Created wireframes in Balsamiq and documented functional and non-functional requirements in Confluence
-• Developed sections, headings, paragraphs and other UI GUI elements using HTML5 in Visual Studio Code
-• Followed Agile Software Development Model and extensively used JIRA to plan and manage project tasks
+- • Pitched an idea for a web based learning and gaming application for children aged 3-15 to learn mathematics
+- • Created wireframes in Balsamiq and documented functional and non-functional requirements in Confluence
+- • Developed sections, headings, paragraphs and other UI GUI elements using HTML5 in Visual Studio Code
+- • Followed Agile Software Development Model and extensively used JIRA to plan and manage project tasks
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
