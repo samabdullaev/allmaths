@@ -7,8 +7,6 @@ Allmaths is a web-based learning application completely developed by a small agi
 - Developed sections, headings, paragraphs and other UI GUI elements using HTML5 in Visual Studio Code
 - Followed Agile Software Development Model and extensively used JIRA to plan and manage project tasks
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
 
 First, run the development server:
