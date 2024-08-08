@@ -1,4 +1,4 @@
-# Allmaths - University Project
+# Allmaths - University Project to Teach Children Maths
 
 Allmaths is a web-based learning application completely developed by a small agile development team that went through all phases of software development model, starting from Requirements Analysis, Development and ending with Manual Functional Testing. Main resources in the website are grouped under videos, books, games, worksheets and curriculum screens implemented via HTML5, CSS, JavaScript as per wireframes created in Balsamiq and requirements documented in Confluence.
 
