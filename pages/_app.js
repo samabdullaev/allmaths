@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import Aside from '../components/Aside';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import '../styles/globals.css';
 function MyApp({ Component, pageProps }) {
 	useEffect(() => {
@@ -183,6 +185,8 @@ function MyApp({ Component, pageProps }) {
 	const router = useRouter();
 	return (
 		<div>
+			<title>AllMaths | Learn Math with Us</title>
+
 			{router.asPath !== '/games' && router.asPath !== '/worksheets' && (
 				<Navbar />
 			)}
@@ -194,6 +198,7 @@ function MyApp({ Component, pageProps }) {
 			{router.asPath !== '/games' && router.asPath !== '/worksheets' && (
 				<Footer />
 			)}
+			<ToastContainer />
 		</div>
 	);
 }

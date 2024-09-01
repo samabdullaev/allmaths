@@ -9,11 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@sanity/client": "^6.21.1",
+    "@sanity/image-url": "^1.0.2",
     "iframe-resizer-react": "^1.1.0",
     "jquery": "^3.6.0",
     "next": "12.1.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-toastify": "^8.1.0",
     "react-youtube": "^7.14.0"
   },
   "devDependencies": {

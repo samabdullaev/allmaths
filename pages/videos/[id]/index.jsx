@@ -1,44 +1,64 @@
+import { client, urlFor } from 'client';
 import Breadcrumb from 'components/Breadcrumb';
 import VideoCard from 'components/cards/VideoCard';
 import Loader from 'components/Loader';
 import PlayList from 'components/PlayList';
 import YoutubePlayer from 'components/YoutubePlayer';
-import { VIDEOS_DATA } from 'data/videos';
 import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 const VideoPage = () => {
 	const [loading, setLoading] = useState(true);
-	const [video, setVideo] = useState(null);
+	const [topic, setTopic] = useState(null);
 	const [selectedVideo, setSelectedVideo] = useState(null);
+	const [relatedTopics, setRelatedTopics] = useState([]);
 	const router = useRouter();
 	const id = router.query.id;
 
 	useEffect(() => {
 		if (id) {
-			const v = VIDEOS_DATA.find((item) => item.id === Number(id));
-			if (v) {
-				setVideo(v);
-				setSelectedVideo(v.videos[0]);
-				setLoading(false);
+			if (id) {
+				const query = `{
+					"currentTopic": *[_type == "topic" && _id == $id]{
+						_id,
+						title,
+						image,
+						description,
+						"videos": videos[]->{
+							_id,
+							title,
+							url,
+							text
+						}
+					}[0],
+					"relatedTopics": *[_type == "topic" && _id != $id] | order(_createdAt desc)[0...5]{
+						_id,
+						title,
+						image
+					}
+				}`;
 			}
+			client.fetch(query, { id }).then((data) => {
+				setTopic(data.currentTopic);
+				setSelectedVideo(data.currentTopic?.videos[0]) || {};
+				setRelatedTopics(data.relatedTopics || []);
+				setLoading(false);
+			});
 		}
 	}, [id]);
-
-	console.log('selectedVideo: ', selectedVideo);
 
 	if (loading) {
 		return <Loader />;
 	}
 
-	if (!video || !selectedVideo) {
+	if (!topic || !selectedVideo) {
 		return <h1>Video not found</h1>;
 	}
 	return (
 		<div className='page__container'>
 			<Breadcrumb
-				title={video.title}
+				title={topic.title}
 				subTitle='Videos'
-				path={`/videos/${video.id}`}
+				path={`/videos/${topic.id}`}
 			/>
 			<section className='course-details-area pt-70 pb-120 pt-md-100 pb-md-70 pt-xs-100 pb-xs-70'>
 				<div className='container'>
@@ -56,7 +76,7 @@ const VideoPage = () => {
 							</div>
 						</div>
 						<PlayList
-							data={video.videos}
+							data={topic.videos}
 							current={selectedVideo}
 							setSelectedVideo={setSelectedVideo}
 						/>
@@ -64,7 +84,7 @@ const VideoPage = () => {
 					<div className='row'>
 						<div className='col-xl-6 col-lg-7'>
 							<div className='project-details mb-20'>
-								<p>{video.description}</p>
+								<p>{topic.description}</p>
 							</div>
 							<div className='project-details '>
 								<p>{selectedVideo.text}</p>
@@ -74,20 +94,18 @@ const VideoPage = () => {
 					</div>
 				</div>
 			</section>
-			{/*course-details-area end*/}
-			{/* feature-course start */}
 			<section className='feature-course pb-130 pt-md-95 pb-md-80 pt-xs-95 pb-xs-80'>
 				<div className='container'>
 					<h2 className='courses-title mb-35'>Related Topics</h2>
 					<div className='row'>
-						{VIDEOS_DATA?.filter((item) => item.id !== Number(id))
-							.slice(0, 3)
+						{relatedTopics
+							?.filter((item) => item.id !== Number(id))
 							.map((item, index) => (
 								<VideoCard
 									key={index}
-									id={item.id}
+									id={item._id}
 									title={item.title}
-									image={item.image}
+									image={urlFor(item.image)}
 								/>
 							))}
 					</div>

@@ -1,14 +1,15 @@
+import { urlFor } from 'client';
 import BookCard from 'components/cards/BookCard';
 import { BOOKS_DATA } from 'data/books';
 
-const FeaturedCourses = () => {
+const FeaturedCourses = ({ stages }) => {
 	return (
 		<section className='feature-course pt-50 pb-130 pt-md-95 pb-md-80 pt-xs-95 pb-xs-80'>
 			<div className='container'>
 				<div className='row'>
 					<div className='col-xl-12'></div>
 				</div>
-				{BOOKS_DATA?.map((stage, index) => (
+				{stages?.map((stage, index) => (
 					<div key={index} className='section-title text-center mb-50'>
 						<h2 className='text-danger'>{stage.title}</h2>
 						{stage.years?.map((year, index) => (
@@ -23,7 +24,7 @@ const FeaturedCourses = () => {
 										<BookCard
 											key={index}
 											title={book.title}
-											image={book.image}
+											image={urlFor(book.image)}
 											url={book.url}
 										/>
 									))}

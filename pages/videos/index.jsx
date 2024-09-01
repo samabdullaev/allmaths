@@ -1,8 +1,36 @@
+import { client, urlFor } from 'client';
 import Breadcrumb from 'components/Breadcrumb';
 import VideoCard from 'components/cards/VideoCard';
-import { VIDEOS_DATA } from 'data/videos';
-
+import Loader from 'components/Loader';
+import { useEffect, useState } from 'react';
 const VideosPage = () => {
+	const [topics, setTopics] = useState([]);
+
+	useEffect(() => {
+		const query = `*[_type == "topic"]{
+  _id,
+  title,
+  image,
+  description,
+  "videos": videos[]->{
+    _id,
+    title,
+    url,
+    text
+  }
+}
+`;
+
+		client.fetch(query).then((data) => {
+			const sorted = data.sort((a, b) => a.title.localeCompare(b.title));
+			setTopics(sorted);
+		});
+	}, []);
+
+	if (!topics.length) {
+		return <Loader />;
+	}
+
 	return (
 		<div className='page__container'>
 			<Breadcrumb title={'Videos'} />
@@ -11,12 +39,12 @@ const VideosPage = () => {
 					<div className='row'>
 						<div className='col-xl-12'>
 							<div className='row'>
-								{VIDEOS_DATA?.map((item, index) => (
+								{topics?.map((item, index) => (
 									<VideoCard
 										key={index}
-										id={item.id}
+										id={item._id}
 										title={item.title}
-										image={item.image}
+										image={urlFor(item.image)}
 									/>
 								))}
 							</div>

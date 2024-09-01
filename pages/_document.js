@@ -4,19 +4,6 @@ export default function Document() {
 	return (
 		<Html>
 			<Head>
-				<meta charset='utf-8' />
-				<meta httpEquiv='x-ua-compatible' content='ie=edge' />
-				<title>Zoomy - E-learning HTML5 Template</title>
-				<meta
-					name='keywords'
-					content='online education, e-learning, coaching, education, teaching, learning'
-				/>
-				<meta
-					name='description'
-					content='Zoomy is a e-learnibg HTML template for all kinds of education, coaching, online education website'
-				/>
-				<meta name='viewport' content='width=device-width, initial-scale=1' />
-
 				<link rel='manifest' href='site.html' />
 				<link
 					rel='shortcut icon'

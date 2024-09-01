@@ -1,4 +1,5 @@
 import Breadcrumb from 'components/Breadcrumb';
+import ContactForm from 'components/ContactForm';
 
 const ContactPage = () => {
 	return (
@@ -84,42 +85,7 @@ const ContactPage = () => {
 				<div className='container'>
 					<div className='row align-items-center'>
 						<div className='col-lg-6'>
-							<div className='contact-form-wrapper mb-30'>
-								<h2 className='mb-45'>Contact Us</h2>
-								<form
-									action='#'
-									className='row gx-3 comments-form contact-form'
-								>
-									<div className='col-lg-6 col-md-6 mb-30'>
-										<input type='text' placeholder='Full Name' />
-									</div>
-									<div className='col-lg-6 col-md-6 mb-30'>
-										<input type='text' placeholder='Last Name' />
-									</div>
-									<div className='col-lg-6 col-md-6 mb-30'>
-										<input type='text' placeholder='Phone Number' />
-									</div>
-									<div className='col-lg-6 col-md-6 mb-30'>
-										<input type='text' placeholder='Address' />
-									</div>
-									<div className='col-lg-12 mb-30'>
-										<input type='text' placeholder='Email Name' />
-									</div>
-									<div className='col-lg-12 mb-30'>
-										<textarea
-											name='commnent'
-											id='commnent'
-											cols={30}
-											rows={10}
-											placeholder='Write a Message'
-											defaultValue={''}
-										/>
-									</div>
-								</form>
-								<a href='#' className='theme_btn message_btn mt-20'>
-									Send Message
-								</a>
-							</div>
+							<ContactForm />
 						</div>
 						<div className='col-lg-6'>
 							<div className='contact-img contact-img-02 mb-30'>
