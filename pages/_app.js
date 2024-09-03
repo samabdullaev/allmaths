@@ -187,9 +187,7 @@ function MyApp({ Component, pageProps }) {
 		<div>
 			<title>AllMaths | Learn Math with Us</title>
 
-			{router.asPath !== '/games' && router.asPath !== '/worksheets' && (
-				<Navbar />
-			)}
+			{<Navbar />}
 			<Aside />
 			<div className='body-overlay' />
 			<main>

@@ -1,13 +1,12 @@
-const Worksheets = () => {
+const ExternalPages = () => {
 	return (
 		<div
 			style={{
 				margin: 0,
 				padding: 0,
-				// minHeight: '100vh',
-				height: '100vh',
+				minHeight: '100vh',
 				overflow: 'hidden',
-				backgroundColor: 'white !important',
+				position: 'relative',
 			}}
 		>
 			<iframe
@@ -15,20 +14,31 @@ const Worksheets = () => {
 				src='http://mathsanswers.org.uk/gcse/'
 				width='100%'
 				style={{
-					// paddingTop: '120px',
-					background: 'white !important',
+					marginTop: '140px',
 					border: 'none',
 					width: '100%',
 					height: '100vh',
-					// height: 'calc(100)',
 					position: 'absolute',
+					top: 0,
+					left: 0,
 				}}
-				// srcDoc='<footer><h1>Hello</h1></footer>'
-				// sandbox='allow-scripts allow-modal'
 				loading='eager'
 			></iframe>
+			{/* Overlay to hide the navbar */}
+			<div
+				style={{
+					position: 'absolute',
+
+					top: 0,
+					left: 0,
+					width: '100%',
+					height: '140px', // Adjust height based on the navbar size
+					backgroundColor: '#fff', // Or match the background color of the iframe content
+					zIndex: 10,
+				}}
+			></div>
 		</div>
 	);
 };
 
-export default Worksheets;
+export default ExternalPages;
